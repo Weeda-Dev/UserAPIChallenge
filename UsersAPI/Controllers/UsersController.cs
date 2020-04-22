@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
+using System.Web;
 using System.Web.Http;
 
 namespace UsersAPI.Controllers
@@ -10,9 +13,15 @@ namespace UsersAPI.Controllers
     public class UsersController : ApiController
     {
         // GET api/users
-        public IEnumerable<string> Get()
+        public HttpResponseMessage Get()
         {
-            return new string[] { "value1", "value2" };
+            var json = File.ReadAllText(HttpContext.Current.Server.MapPath(@"~/App_Data/usersData.json"));
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(json, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
         }
 
         // GET api/user/5

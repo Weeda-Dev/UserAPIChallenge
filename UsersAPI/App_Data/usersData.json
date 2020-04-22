@@ -1,0 +1,22 @@
+﻿[
+  {
+    "sessionId": 0,
+    "title": "Mr",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "bah1@gmail.com",
+    "birthday": "23 June 1993",
+    "phoneNumber": "02830484943",
+    "profileImage": "gal.jpg" 
+  },
+  {
+    "sessionId": 1,
+    "title": "Mr",
+    "firstName": "Tar",
+    "lastName": "San",
+    "email": "bah2@gmail.com",
+    "birthday": "21 June 1993",
+    "phoneNumber": "02830484943",
+    "profileImage": "gal2.jpg"
+  }
+]
