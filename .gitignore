@@ -1,0 +1,10 @@
+
+*.dll
+
+.vs/UsersAPI/v16/.suo
+
+UsersAPI/obj/Debug/
+
+UsersAPI/bin/
+
+.vs/UsersAPI/v16/

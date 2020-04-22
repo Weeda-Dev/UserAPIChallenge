@@ -7,15 +7,20 @@ using System.Web.Http;
 
 namespace UsersAPI.Controllers
 {
-    public class ValuesController : ApiController
+    public class UsersController : ApiController
     {
-        // GET api/values
+        // GET api/users
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
+        // GET api/user/5
+        /// <summary>
+        /// Get all users information by id
+        /// </summary>
+        /// <param name="id">id of the user</param>
+        /// <returns>all information of the user</returns>
         public string Get(int id)
         {
             return "value";
