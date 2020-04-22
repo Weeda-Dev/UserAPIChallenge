@@ -1,6 +1,6 @@
 ﻿[
   {
-    "sessionId": 0,
+    "id": 0,
     "title": "Mr",
     "firstName": "John",
     "lastName": "Smith",
@@ -10,7 +10,7 @@
     "profileImage": "gal.jpg" 
   },
   {
-    "sessionId": 1,
+    "id": 1,
     "title": "Mr",
     "firstName": "Tar",
     "lastName": "San",
