@@ -38,7 +38,6 @@ namespace UsersAPI.Controllers
         public IHttpActionResult Get(int id, string firstName, string lastName)
         {
            var jsonObject = JObject.Parse(usersDatajson);
-            //var ga = jsonObject["users"][1].ToString();
 
             var result =  jsonObject["users"].Values<JObject>()
             .Where(x => x["id"].Value<int>() == id || 
