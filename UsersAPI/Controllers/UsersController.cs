@@ -28,24 +28,27 @@ namespace UsersAPI.Controllers
             };
         }
 
-        // GET /api/users/get?id={id}&firstName={firstName}&lastName={lastNmae}
+        // GET /api/users/get?firstName={firstName}&lastName={lastName}
         /// <summary>
         /// Get all users information by id/ firstname or last name
         /// </summary>
-        /// <param name="id">id of the user</param>
         /// <param name="firstName">first name of the user</param>
+        /// <param name="lastName">first name of the user</param>
         /// <returns>all information of the user</returns>
-        public IHttpActionResult Get(int id, string firstName, string lastName)
+        public IHttpActionResult Get(string firstName, string lastName)
         {
-           var jsonObject = JObject.Parse(usersDatajson);
+            var userListsob = JsonConvert.DeserializeObject<AllUsersModel>(usersDatajson);
 
-            var result =  jsonObject["users"].Values<JObject>()
-            .Where(x => x["id"].Value<int>() == id || 
-            x["firstName".ToLower()].Value<string>() == firstName.ToLower() ||
-            x["lastName".ToLower()].Value<string>() == lastName.ToLower())
-            .FirstOrDefault();
+            var userLists = userListsob.users;
 
-            return Json(result);
+            foreach(var user in userLists)
+            {
+                if (user.FirstName.ToLower().Equals(firstName.ToLower()) ||
+                    user.LastName.ToLower().Equals(lastName.ToLower()))
+                    return Json(user);
+            }
+
+            return Ok("No user found");
         }
 
         // POST api/values
