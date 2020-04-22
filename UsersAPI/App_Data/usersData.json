@@ -1,34 +1,27 @@
 ﻿{
   "users": [
     {
-      "name": {
-        "title": "mr",
-        "first": "brad",
-        "last": "gibson"
-      },
+      "id": 0,
+      "title": "mr",
+      "firstName": "brad",
+      "lastName": "gibson",
       "email": "brad.gibson@example.com",
       "birthday": "1993-07-20",
       "mobilePhone": "011-962-7516",
-      "profileImage": {
-        "large": "https://randomuser.me/api/portraits/men/75.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/75.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/75.jpg"
-      }
+      "profileImageLarge": "https://randomuser.me/api/portraits/men/75.jpg",
+      "profileImageThumbnail": "https://randomuser.me/api/portraits/med/men/75.jpg"
     },
     {
-      "name": {
-        "title": "miss",
-        "first": "gem",
-        "last": "tay"
-      },
-      "email": "gem.tay@example.com",
-      "birthday": "1995-03-12",
-      "mobilePhone": "011-962-7432",
-      "profileImage": {
-        "large": "https://randomuser.me/api/portraits/men/75.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/75.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/75.jpg"
-      }
+      "id": 1,
+      "title": "miss",
+      "firstName": "gel",
+      "lastName": "swanson",
+      "email": "gel.swanson@example.com",
+      "birthday": "1995-01-27",
+      "mobilePhone": "011-925-7516",
+      "profileImageLarge": "https://randomuser.me/api/portraits/men/75.jpg",
+      "profileImageThumbnail": "https://randomuser.me/api/portraits/med/men/75.jpg"
     }
   ]
 }
+
