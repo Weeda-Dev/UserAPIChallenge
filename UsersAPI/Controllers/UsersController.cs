@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -10,15 +11,15 @@ namespace UsersAPI.Controllers
 {
     public class UsersController : ApiController
     {
-        GetJsonFileDataHelper jsonHelper = new GetJsonFileDataHelper();
-        GetUsersHelper getUsersHelper = new GetUsersHelper();
+        GetJsonFileDataHelper _jsonHelper = new GetJsonFileDataHelper();
+        GetUsersHelper _getUsersHelper = new GetUsersHelper();
 
         // GET api/users
         public HttpResponseMessage Get()
         {
             return new HttpResponseMessage()
             {
-                Content = new StringContent(jsonHelper.GetUsersDataJsonFile(), Encoding.UTF8, "application/json"),
+                Content = new StringContent(_jsonHelper.GetUsersDataFromJsonFile(), Encoding.UTF8, "application/json"),
                 StatusCode = HttpStatusCode.OK
             };
         }
@@ -32,7 +33,7 @@ namespace UsersAPI.Controllers
         /// <returns>all information of the user</returns>
         public IHttpActionResult Get(string firstName, string lastName)
         {
-            IEnumerable<UserModel> userLists = getUsersHelper.GetUserLists();
+            IEnumerable<UserModel> userLists = _getUsersHelper.GetUserLists();
 
             foreach (var user in userLists)
             {
@@ -54,13 +55,22 @@ namespace UsersAPI.Controllers
         {
         }
 
-        // DELETE api/values/5
-        public void Delete(int id)
+        // DELETE api/values/id
+        public IHttpActionResult Delete(int id)
         {
-            //var user = _getUsersHelper.GetUserLists();
-            //var userToDelete = _jsonHelper.GetUsersDataJsonFile().FirstOrDefault(obj => obj["id"].Value<int>() == id);
+            var userListsRootOb = _getUsersHelper.GetUserListRootObject();
+            var allUsers = _getUsersHelper.GetUserLists();
+            var idExists = !allUsers.Where(x => x.Id.Equals(id)).ToList().Count().Equals(0);
 
-            //experiencesArrary.Remove(companyToDeleted);
+            if (idExists)
+            {
+                allUsers = allUsers.Where(x => !(x.Id.Equals(id))).ToList();
+                userListsRootOb.users = allUsers;
+                _jsonHelper.SerializedDataAndSavetoJsonFile(userListsRootOb);
+                return Ok($"User id: {id} has succuessfully been removed.");
+            }
+
+            return Ok($"This user id does not exists, not item has been removed.");
         }
     }
 }

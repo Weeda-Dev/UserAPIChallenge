@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Newtonsoft.Json;
+using System.IO;
 using System.Web;
 using UsersAPI.Constants;
 
@@ -9,9 +10,20 @@ namespace UsersAPI.Utilities
     /// </summary>
     public class GetJsonFileDataHelper
     {
-        public string GetUsersDataJsonFile()
+        internal string GetUsersDataFromJsonFile()
         {
-            return File.ReadAllText(HttpContext.Current.Server.MapPath($@"{FilePathConstants.USERS_DATA_JSON_FILE_PATH}"));
+            return File.ReadAllText(GetUsersDataJsonFilePath());
+        }
+
+        internal string GetUsersDataJsonFilePath()
+        {
+            return HttpContext.Current.Server.MapPath($@"{FilePathConstants.USERS_DATA_JSON_FILE_PATH}");
+        }
+
+        internal void SerializedDataAndSavetoJsonFile(AllUsersModel userListsRootOb)
+        {
+            var serializedUserLists = JsonConvert.SerializeObject(userListsRootOb, Formatting.Indented);
+            File.WriteAllText(GetUsersDataJsonFilePath(), serializedUserLists);
         }
     }
 }

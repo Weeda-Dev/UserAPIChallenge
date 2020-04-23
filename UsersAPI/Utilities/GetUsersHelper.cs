@@ -9,9 +9,15 @@ namespace UsersAPI.Utilities
     public class GetUsersHelper
     {
         GetJsonFileDataHelper jsonHelper = new GetJsonFileDataHelper();
+
+        internal AllUsersModel GetUserListRootObject()
+        {
+            return JsonConvert.DeserializeObject<AllUsersModel>(jsonHelper.GetUsersDataFromJsonFile());
+        }
+
         internal IEnumerable<UserModel> GetUserLists()
         {
-            var userListsob = JsonConvert.DeserializeObject<AllUsersModel>(jsonHelper.GetUsersDataJsonFile());
+            AllUsersModel userListsob = GetUserListRootObject();
             return userListsob.users;
         }
     }
