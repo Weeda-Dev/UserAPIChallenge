@@ -163,6 +163,7 @@
     </Compile>
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\GetIdHelper.cs" />
     <Compile Include="Utilities\GetUsersHelper.cs" />
     <Compile Include="Utilities\GetJsonFileDataHelper.cs" />
   </ItemGroup>

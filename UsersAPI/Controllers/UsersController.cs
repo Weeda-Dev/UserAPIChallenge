@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -13,6 +12,7 @@ namespace UsersAPI.Controllers
     {
         GetJsonFileDataHelper _jsonHelper = new GetJsonFileDataHelper();
         GetUsersHelper _getUsersHelper = new GetUsersHelper();
+        GetIdHelper _getIdHelper = new GetIdHelper();
 
         // GET api/users
         public HttpResponseMessage Get()
@@ -55,9 +55,34 @@ namespace UsersAPI.Controllers
             return Ok("No user(s) found, please recheck that you have typed the correct name.");
         }
 
-        // POST api/values
-        public void Post([FromBody]JToken postData, HttpRequestMessage request)
+        // POST api/users
+        public IHttpActionResult Post([FromBody]UserModel nUser)
         {
+            var userListsRootOb = _getUsersHelper.GetUserListRootObject();
+            var allUsersList = _getUsersHelper.GetUserLists().ToList();
+            nUser.Id = _getIdHelper.GetNewUserId(allUsersList);
+
+            if (ModelState.IsValid)
+            {
+                var newUser = new UserModel
+                {
+                    Id = nUser.Id,
+                    Title = nUser.Title,
+                    FirstName = nUser.FirstName,
+                    LastName = nUser.LastName,
+                    Email = nUser.Email,
+                    Birthday = nUser.Birthday,
+                    MobileNumber = nUser.MobileNumber,
+                    ProfileImageLarge = nUser.ProfileImageLarge,
+                    ProfileImageThumbnail = nUser.ProfileImageThumbnail
+                };
+
+                allUsersList.Add(newUser);
+                userListsRootOb.users = allUsersList;
+                _jsonHelper.SerializedDataAndSavetoJsonFile(userListsRootOb);
+                return Ok($"New user id: {nUser.Id} has been successfully added");
+            }
+            return BadRequest("Invalid input.");
         }
 
         // PUT api/values/5
