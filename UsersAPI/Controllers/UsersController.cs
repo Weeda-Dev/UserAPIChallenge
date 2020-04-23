@@ -34,15 +34,25 @@ namespace UsersAPI.Controllers
         public IHttpActionResult Get(string firstName, string lastName)
         {
             IEnumerable<UserModel> userLists = _getUsersHelper.GetUserLists();
+            List<UserModel> foundUsers = new List<UserModel>();
+            var userListsRootOb = _getUsersHelper.GetUserListRootObject();
 
             foreach (var user in userLists)
             {
-                if (user.FirstName.ToLower().Equals(firstName.ToLower()) ||
-                    user.LastName.ToLower().Equals(lastName.ToLower()))
-                    return Json(user);
+                if (user.FirstName.ToLower().Contains(firstName.ToLower()) ||
+                    user.LastName.ToLower().Contains(lastName.ToLower()))
+                {
+                    foundUsers.Add(user);
+                }
             }
 
-            return Ok("No user found, please recheck that you have typed the correct name.");
+            if(foundUsers.Count() > 0)
+            {
+                userListsRootOb.users = foundUsers;
+                return Json(userListsRootOb);
+            }
+
+            return Ok("No user(s) found, please recheck that you have typed the correct name.");
         }
 
         // POST api/values
