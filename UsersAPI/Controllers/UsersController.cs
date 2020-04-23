@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Ajax.Utilities;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -13,6 +15,7 @@ namespace UsersAPI.Controllers
         GetJsonFileDataHelper _jsonHelper = new GetJsonFileDataHelper();
         GetUsersHelper _getUsersHelper = new GetUsersHelper();
         GetIdHelper _getIdHelper = new GetIdHelper();
+        ValidInputHelper _validInputHelper = new ValidInputHelper();
 
         // GET api/users
         public HttpResponseMessage Get()
@@ -37,8 +40,11 @@ namespace UsersAPI.Controllers
             List<UserModel> foundUsers = new List<UserModel>();
             var userListsRootOb = _getUsersHelper.GetUserListRootObject();
 
+            _validInputHelper.TurnNullToEmptyString(ref firstName, ref lastName);
+
             foreach (var user in userLists)
             {
+
                 if (user.FirstName.ToLower().Contains(firstName.ToLower()) ||
                     user.LastName.ToLower().Contains(lastName.ToLower()))
                 {
@@ -46,7 +52,7 @@ namespace UsersAPI.Controllers
                 }
             }
 
-            if(foundUsers.Count() > 0)
+            if (foundUsers.Count() > 0)
             {
                 userListsRootOb.users = foundUsers;
                 return Json(userListsRootOb);
@@ -54,6 +60,7 @@ namespace UsersAPI.Controllers
 
             return Ok("No user(s) found, please recheck that you have typed the correct name.");
         }
+
 
         // POST api/users
         public IHttpActionResult Post([FromBody]UserModel nUser)
@@ -85,9 +92,39 @@ namespace UsersAPI.Controllers
             return BadRequest("Invalid input.");
         }
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        // PUT api/users/5
+        public IHttpActionResult Put(int id, [FromBody]UserModel nUser)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Invalid input.");
+            }
+
+            var userListsRootOb = _getUsersHelper.GetUserListRootObject();
+            var allUsersList = _getUsersHelper.GetUserLists();
+            var updateUser = allUsersList.Where(x => (x.Id.Equals(id)));
+
+            if(updateUser.Count() == 0)
+            {
+                return Content(HttpStatusCode.NotFound,"User not found, please check this user id exists");
+            }
+
+            allUsersList.Where(x => x.Id.Equals(id))
+                    .Select(x => {
+                        x.Title = nUser.Title;
+                        x.FirstName = nUser.FirstName;
+                        x.LastName = nUser.LastName;
+                        x.Email = nUser.Email;
+                        x.Birthday = nUser.Birthday;
+                        x.MobileNumber = nUser.MobileNumber;
+                        x.ProfileImageLarge = nUser.ProfileImageLarge;
+                        x.ProfileImageThumbnail = nUser.ProfileImageThumbnail;
+                        return x;
+                    }).ToList();
+
+            userListsRootOb.users = allUsersList;
+                _jsonHelper.SerializedDataAndSavetoJsonFile(userListsRootOb);
+                return Ok($"User id: {id} has been successfully updated");
         }
 
         // DELETE api/values/id
