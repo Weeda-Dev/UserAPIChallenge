@@ -1,21 +1,29 @@
-﻿using Microsoft.Ajax.Utilities;
-using System;
+﻿using Autofac.Integration.WebApi;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
-using UsersAPI.Utilities;
+using UsersAPI.Interfaces;
 
-namespace UsersAPI.Controllers
+namespace UsersAPI.Controllers.API
 {
     public class UsersController : ApiController
     {
-        GetJsonFileDataHelper _jsonHelper = new GetJsonFileDataHelper();
-        GetUsersHelper _getUsersHelper = new GetUsersHelper();
-        GetIdHelper _getIdHelper = new GetIdHelper();
-        ValidInputHelper _validInputHelper = new ValidInputHelper();
+        private readonly IGetJsonFileDataService _jsonHelper;
+        private readonly IGetUsersService _getUsersHelper;
+        private readonly IGetIdService _getIdHelper;
+        private readonly IValidInputService _validInputHelper;
+
+        public UsersController(IGetJsonFileDataService jsonHelper, IGetUsersService getUsersHelper,
+            IGetIdService getIdHelper, IValidInputService validInputHelper)
+        {
+            _jsonHelper = jsonHelper;
+            _getUsersHelper = getUsersHelper;
+            _getIdHelper = getIdHelper;
+            _validInputHelper = validInputHelper;
+        }
 
         // GET api/users
         public HttpResponseMessage Get()

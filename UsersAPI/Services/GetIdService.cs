@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UsersAPI.Interfaces;
 
 namespace UsersAPI.Utilities
 {
-    public class GetIdHelper
+    public class GetIdService : IGetIdService
     {
-        internal int GetNewUserId(IEnumerable<UserModel> allUsers)
+        public int GetNewUserId(IEnumerable<UserModel> allUsers)
         {
             var allUsersDesc = allUsers.OrderByDescending(x => x.Id);
             var id = allUsersDesc.FirstOrDefault().Id + 1;

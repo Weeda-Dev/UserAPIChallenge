@@ -1,10 +1,11 @@
 ﻿using System;
+using UsersAPI.Interfaces;
 
 namespace UsersAPI.Utilities
 {
-    public class ValidInputHelper
+    public class ValidInputService : IValidInputService
     {
-        internal void TurnNullToEmptyString(ref string firstName, ref string lastName)
+        public void TurnNullToEmptyString(ref string firstName, ref string lastName)
         {
             if (String.IsNullOrEmpty(firstName))
             {
