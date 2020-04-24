@@ -92,6 +92,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicesTests\GetIdServiceTests.cs" />
+    <Compile Include="ServicesTests\GetUsersServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
