@@ -15,19 +15,13 @@ namespace UsersAPI.Tests.ServicesTests
         [TestCase(98563253)]
         public void GivenValidUserModel_WhenGetNewUserIdIsCalled_TheShouldReturnCorrectNewUserId(int lastIdOnUsersList)
         {
-            //Set up
-            IList<UserModel> newUser = new List<UserModel>();
-            newUser.Add(new UserModel { Id = lastIdOnUsersList });
-            var mock = new Mock<IEnumerable<UserModel>>();
-            mock.Setup(x => x.GetEnumerator()).Returns(newUser.GetEnumerator());
             GetIdService getIdServ = new GetIdService();
 
             var expectedResult = lastIdOnUsersList + 1;
-            var result = getIdServ.GetNewUserId(mock.Object);
+            var result = getIdServ.GetNewUserId(lastIdOnUsersList);
 
             result.ShouldBe(expectedResult);
             result.ShouldNotBe(lastIdOnUsersList);
-
         }
     }
 }

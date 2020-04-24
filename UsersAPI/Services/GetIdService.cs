@@ -6,10 +6,9 @@ namespace UsersAPI.Utilities
 {
     public class GetIdService : IGetIdService
     {
-        public int GetNewUserId(IEnumerable<UserModel> allUsers)
+        public int GetNewUserId(int lastIdOnUsersList)
         {
-            var allUsersDesc = allUsers.OrderByDescending(x => x.Id);
-            var id = allUsersDesc.FirstOrDefault().Id + 1;
+            var id = lastIdOnUsersList + 1;
             return id;
         }
     }

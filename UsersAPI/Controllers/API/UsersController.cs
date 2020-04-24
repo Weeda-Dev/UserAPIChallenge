@@ -75,7 +75,9 @@ namespace UsersAPI.Controllers.API
         {
             var userListsRootOb = _getUsersHelper.GetUserListRootObject();
             var allUsersList = _getUsersHelper.GetUserLists().ToList();
-            nUser.Id = _getIdHelper.GetNewUserId(allUsersList);
+
+            var lastIdOnUsersList = allUsersList.OrderByDescending(x => x.Id).First().Id;
+            nUser.Id = _getIdHelper.GetNewUserId(lastIdOnUsersList);
 
             if (ModelState.IsValid)
             {
