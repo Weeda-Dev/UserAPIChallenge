@@ -1,7 +1,5 @@
-﻿using Moq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Shouldly;
-using System.Collections.Generic;
 using UsersAPI.Utilities;
 
 namespace UsersAPI.Tests.ServicesTests
@@ -21,7 +19,6 @@ namespace UsersAPI.Tests.ServicesTests
             var result = getIdServ.GetNewUserId(lastIdOnUsersList);
 
             result.ShouldBe(expectedResult);
-            result.ShouldNotBe(lastIdOnUsersList);
         }
     }
 }
