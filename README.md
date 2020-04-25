@@ -43,6 +43,6 @@ Note: {id} is the id of the user you would like to update (please have the old v
 Note:  {id} is the id of the user you would like to delete.
 
 # UserAPI code file
-Controllers/API/UsersController.cs
+UsersAPI/Controllers/API/UsersController.cs
 
 
