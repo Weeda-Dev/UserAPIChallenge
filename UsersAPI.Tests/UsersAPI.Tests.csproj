@@ -94,6 +94,7 @@
     <Compile Include="ServicesTests\GetIdServiceTests.cs" />
     <Compile Include="ServicesTests\GetUsersServiceTests.cs" />
     <Compile Include="ServicesTests\ValidInputServiceTests.cs" />
+    <Compile Include="Utilities\FakeJsonHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
