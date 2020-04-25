@@ -14,14 +14,16 @@ namespace UsersAPI.Controllers.API
         private readonly IGetUsersService _getUsersHelper;
         private readonly IIdService _getIdHelper;
         private readonly IGetValidInputService _validInputHelper;
+        private readonly IFilePathService _filePathService;
 
         public UsersController(IJsonFileDataService jsonHelper, IGetUsersService getUsersHelper,
-            IIdService getIdHelper, IGetValidInputService validInputHelper)
+            IIdService getIdHelper, IGetValidInputService validInputHelper, IFilePathService filePathService)
         {
             _jsonHelper = jsonHelper;
             _getUsersHelper = getUsersHelper;
             _getIdHelper = getIdHelper;
             _validInputHelper = validInputHelper;
+            _filePathService = filePathService;
         }
 
         // GET api/users
@@ -29,7 +31,8 @@ namespace UsersAPI.Controllers.API
         {
             return new HttpResponseMessage()
             {
-                Content = new StringContent(_jsonHelper.GetUsersDataFromJsonFile(), Encoding.UTF8, "application/json"),
+                Content = new StringContent(_jsonHelper.GetUsersDataFromJsonFile(_filePathService.GetUsersDataJsonFilePath()),
+                Encoding.UTF8, "application/json"),
                 StatusCode = HttpStatusCode.OK
             };
         }

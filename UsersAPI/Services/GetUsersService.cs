@@ -10,15 +10,17 @@ namespace UsersAPI.Services
     public class GetUsersService : IGetUsersService
     {
         private readonly IJsonFileDataService _jsonHelper;
+        private readonly IFilePathService _filePathService;
 
-        public GetUsersService(IJsonFileDataService jsonHelper)
+        public GetUsersService(IJsonFileDataService jsonHelper, IFilePathService filePathService)
         {
             _jsonHelper = jsonHelper;
+            _filePathService = filePathService;
         }
 
         public AllUsersRootModel GetUserListRootObject()
         {
-            return JsonConvert.DeserializeObject<AllUsersRootModel>(_jsonHelper.GetUsersDataFromJsonFile());
+            return JsonConvert.DeserializeObject<AllUsersRootModel>(_jsonHelper.GetUsersDataFromJsonFile(_filePathService.GetUsersDataJsonFilePath()));
         }
 
         public IEnumerable<UserModel> GetUserLists()

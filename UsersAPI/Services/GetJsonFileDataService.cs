@@ -16,11 +16,19 @@ namespace UsersAPI.Services
             _getFilePathService = getFilePathService;
         }
 
-        public string GetUsersDataFromJsonFile()
+        /// <summary>
+        /// Get users data from a Json file
+        /// </summary>
+        /// <returns>User(s) data</returns>
+        public string GetUsersDataFromJsonFile(string JsonFilePath)
         {
-            return File.ReadAllText(_getFilePathService.GetUsersDataJsonFilePath());
+            return File.ReadAllText(JsonFilePath);
         }
 
+        /// <summary>
+        /// Serialize data into Json format then save that data onto a Json File.
+        /// </summary>
+        /// <param name="userListsRootOb">All Users List from the root object level</param>
         public void SerializedDataAndSavetoJsonFile(AllUsersRootModel userListsRootOb)
         {
             var serializedUserLists = JsonConvert.SerializeObject(userListsRootOb, Formatting.Indented);

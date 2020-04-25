@@ -20,9 +20,10 @@ namespace UsersAPI.Tests.ServicesTests
         {
             //Set up
             Mock<IJsonFileDataService> mockJsonHelper = GetMockJsonHelperSetUp();
+            Mock<IFilePathService> mockFilePathService = GetMockFilePathServiceSetup();
 
             //Act
-            GetUsersService gUserServ = new GetUsersService(mockJsonHelper.Object);
+            GetUsersService gUserServ = new GetUsersService(mockJsonHelper.Object, mockFilePathService.Object);
             var userList = gUserServ.GetUserLists();
             var expectedItemValidCount = userList.Count() == 7;
 
@@ -40,9 +41,10 @@ namespace UsersAPI.Tests.ServicesTests
         {
             //Set up
             Mock<IJsonFileDataService> mockJsonHelper = GetMockJsonHelperSetUp();
+            Mock<IFilePathService> mockFilePathService = GetMockFilePathServiceSetup();
 
             //Act
-            GetUsersService gUserServ = new GetUsersService(mockJsonHelper.Object);
+            GetUsersService gUserServ = new GetUsersService(mockJsonHelper.Object, mockFilePathService.Object);
             AllUsersRootModel userListRootObject = gUserServ.GetUserListRootObject();
             bool expectedItemValidCount = userListRootObject.users.Count() == 7;
 
@@ -56,11 +58,18 @@ namespace UsersAPI.Tests.ServicesTests
                 $"on the list is not {expectedFirstPersonFirstName}.");
         }
 
+        private static Mock<IFilePathService> GetMockFilePathServiceSetup()
+        {
+            var mockFilePathService = new Mock<IFilePathService>();
+            mockFilePathService.Setup(x => x.GetUsersDataJsonFilePath()).Returns("");
+            return mockFilePathService;
+        }
+
         private static Mock<IJsonFileDataService> GetMockJsonHelperSetUp()
         {
             var mockJsonHelper = new Mock<IJsonFileDataService>();
             var fakejson = FakeJsonHelper.GetFakeValidUserDataJson();
-            mockJsonHelper.Setup(x => x.GetUsersDataFromJsonFile())
+            mockJsonHelper.Setup(x => x.GetUsersDataFromJsonFile(""))
                 .Returns(fakejson);
             return mockJsonHelper;
         }
