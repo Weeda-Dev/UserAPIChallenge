@@ -6,12 +6,13 @@ What I have implemented is based on Web API only, no Frontend involved.
 UsersAPI/Controllers/API/UsersController.cs
 
 # Getting Started
-I have provided Postman Collection as a sample on how to run each request. 
-Path to User Challenge Api Postman Collection:  {share link here}
-
 Please 'Set as a StartUp Project' on UsersAPI project and run the project on IIS Express
 
-## Path to run each request: 
+I have provided Postman Collection as a sample on how to run each request. 
+Please use Postman to open the colloection.
+##### Import > Import From Link:  https://www.getpostman.com/collections/0b125320f0aca7e684b6
+
+# Path to run each request: 
 ## 1. Get all users
 ```diff
 + [GET] {localhost}/api/users
