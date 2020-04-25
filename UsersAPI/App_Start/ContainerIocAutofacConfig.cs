@@ -3,11 +3,11 @@ using Autofac.Integration.WebApi;
 using System.Reflection;
 using System.Web.Http;
 using UsersAPI.Interfaces;
-using UsersAPI.Utilities;
+using UsersAPI.Services;
 
 namespace UsersAPI
 {
-    public class IocAutofacConfig
+    public class ContainerIocAutofacConfig
     {
         public static void Configure()
         {
@@ -20,7 +20,8 @@ namespace UsersAPI
             builder.RegisterType<GetIdService>().As<IGetIdService>().SingleInstance();
             builder.RegisterType<GetJsonFileDataService>().As<IGetJsonFileDataService>().SingleInstance();
             builder.RegisterType<GetUsersService>().As<IGetUsersService>().SingleInstance();
-            builder.RegisterType<ValidInputService>().As<IValidInputService>().SingleInstance();
+            builder.RegisterType<GetValidInputService>().As<IGetValidInputService>().SingleInstance();
+            builder.RegisterType<GetFilePathService>().As<IGetFilePathService>().SingleInstance();
 
             var container = builder.Build();
             var resolver = new AutofacWebApiDependencyResolver(container);

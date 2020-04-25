@@ -1,9 +1,9 @@
 ﻿using System;
 using UsersAPI.Interfaces;
 
-namespace UsersAPI.Utilities
+namespace UsersAPI.Services
 {
-    public class ValidInputService : IValidInputService
+    public class GetValidInputService : IGetValidInputService
     {
         public void TurnNullToEmptyString(ref string firstName, ref string lastName)
         {

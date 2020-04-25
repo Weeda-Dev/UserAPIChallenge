@@ -5,10 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UsersAPI.Interfaces;
 using UsersAPI.Tests.Utilities;
-using UsersAPI.Utilities;
+using UsersAPI.Services;
 
 namespace UsersAPI.Tests.ServicesTests
 {
+    /// <summary>
+    /// Test get users service
+    /// </summary>
     [TestFixture]
     public class GetUsersServiceTests
     {
@@ -52,6 +55,7 @@ namespace UsersAPI.Tests.ServicesTests
             actualFirstPersonFirstName.ShouldBe(expectedFirstPersonFirstName, "First name of the first person " +
                 $"on the list is not {expectedFirstPersonFirstName}.");
         }
+
         private static Mock<IGetJsonFileDataService> GetMockJsonHelperSetUp()
         {
             var mockJsonHelper = new Mock<IGetJsonFileDataService>();

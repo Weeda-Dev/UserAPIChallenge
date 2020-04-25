@@ -10,7 +10,7 @@ namespace UsersAPI
     {
         protected void Application_Start()
         {
-            IocAutofacConfig.Configure();
+            ContainerIocAutofacConfig.Configure();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

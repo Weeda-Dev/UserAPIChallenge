@@ -1,30 +1,30 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
-using System.Web;
-using UsersAPI.Constants;
 using UsersAPI.Interfaces;
 
-namespace UsersAPI.Utilities
+namespace UsersAPI.Services
 {
     /// <summary>
     /// This is a helper for getting data from Json File
     /// </summary>
     public class GetJsonFileDataService : IGetJsonFileDataService
     {
-        public string GetUsersDataFromJsonFile()
+        private readonly IGetFilePathService _getFilePathService;
+
+        public GetJsonFileDataService(IGetFilePathService getFilePathService)
         {
-            return File.ReadAllText(GetUsersDataJsonFilePath());
+            _getFilePathService = getFilePathService;
         }
 
-        public string GetUsersDataJsonFilePath()
+        public string GetUsersDataFromJsonFile()
         {
-            return HttpContext.Current.Server.MapPath($@"{FilePathConstants.USERS_DATA_JSON_FILE_PATH}");
+            return File.ReadAllText(_getFilePathService.GetUsersDataJsonFilePath());
         }
 
         public void SerializedDataAndSavetoJsonFile(AllUsersRootModel userListsRootOb)
         {
             var serializedUserLists = JsonConvert.SerializeObject(userListsRootOb, Formatting.Indented);
-            File.WriteAllText(GetUsersDataJsonFilePath(), serializedUserLists);
+            File.WriteAllText(_getFilePathService.GetUsersDataJsonFilePath(), serializedUserLists);
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Linq;
 using UsersAPI.Interfaces;
 
-namespace UsersAPI.Utilities
+namespace UsersAPI.Services
 {
     public class GetIdService : IGetIdService
     {

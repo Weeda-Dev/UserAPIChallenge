@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UsersAPI.Interfaces;
 
-namespace UsersAPI.Utilities
+namespace UsersAPI.Services
 {
     /// <summary>
     /// This class is to provide helper when getting users data

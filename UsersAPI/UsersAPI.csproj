@@ -142,7 +142,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\IocAutofacConfig.cs" />
+    <Compile Include="App_Start\ContainerIocAutofacConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -183,6 +183,7 @@
     </Compile>
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GetFilePathService.cs" />
     <Compile Include="Services\GetIdService.cs" />
     <Compile Include="Services\GetUsersService.cs" />
     <Compile Include="Services\GetJsonFileDataService.cs" />
@@ -190,7 +191,8 @@
     <Compile Include="Interfaces\IValidInputService.cs" />
     <Compile Include="Interfaces\IGetJsonFileDataService.cs" />
     <Compile Include="Interfaces\IGetUsersService.cs" />
-    <Compile Include="Services\ValidInputService.cs" />
+    <Compile Include="Interfaces\IGetFilePathService.cs" />
+    <Compile Include="Services\GetValidInputService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />

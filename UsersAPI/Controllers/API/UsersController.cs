@@ -14,10 +14,10 @@ namespace UsersAPI.Controllers.API
         private readonly IGetJsonFileDataService _jsonHelper;
         private readonly IGetUsersService _getUsersHelper;
         private readonly IGetIdService _getIdHelper;
-        private readonly IValidInputService _validInputHelper;
+        private readonly IGetValidInputService _validInputHelper;
 
         public UsersController(IGetJsonFileDataService jsonHelper, IGetUsersService getUsersHelper,
-            IGetIdService getIdHelper, IValidInputService validInputHelper)
+            IGetIdService getIdHelper, IGetValidInputService validInputHelper)
         {
             _jsonHelper = jsonHelper;
             _getUsersHelper = getUsersHelper;

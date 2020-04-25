@@ -1,9 +1,12 @@
 ﻿using NUnit.Framework;
 using Shouldly;
-using UsersAPI.Utilities;
+using UsersAPI.Services;
 
 namespace UsersAPI.Tests.ServicesTests
 {
+    /// <summary>
+    /// Get new user ID Service Test
+    /// </summary>
     [TestFixture]
     public class GetIdServiceTests
     {

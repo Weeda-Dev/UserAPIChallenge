@@ -1,11 +1,14 @@
 ﻿using NUnit.Framework;
 using Shouldly;
-using UsersAPI.Utilities;
+using UsersAPI.Services;
 
 namespace UsersAPI.Tests.ServicesTests
 {
+    /// <summary>
+    /// Test getting valid input service
+    /// </summary>
     [TestFixture]
-    public class ValidInputServiceTests
+    public class GetValidInputServiceTests
     {
         [Test]
         public void GivenNullFirstNameAndLastName_WhenTurnNullToEmptyString_ShouldReturnEmptyString()
@@ -15,7 +18,7 @@ namespace UsersAPI.Tests.ServicesTests
             string lastName = null;
 
             //Act
-            ValidInputService vS = new ValidInputService();
+            GetValidInputService vS = new GetValidInputService();
             vS.TurnNullToEmptyString(ref firstName, ref lastName);
 
             //Assert
@@ -33,7 +36,7 @@ namespace UsersAPI.Tests.ServicesTests
             var lastName = "Smith";
 
             //Act
-            ValidInputService vS = new ValidInputService();
+            GetValidInputService vS = new GetValidInputService();
             vS.TurnNullToEmptyString(ref firstName, ref lastName);
 
             //Assert
@@ -51,7 +54,7 @@ namespace UsersAPI.Tests.ServicesTests
             string lastName = null;
 
             //Act
-            ValidInputService vS = new ValidInputService();
+            GetValidInputService vS = new GetValidInputService();
             vS.TurnNullToEmptyString(ref firstName, ref lastName);
 
             //Assert
@@ -69,7 +72,7 @@ namespace UsersAPI.Tests.ServicesTests
             string lastName = "Smith";
 
             //Act
-            ValidInputService vS = new ValidInputService();
+            GetValidInputService vS = new GetValidInputService();
             vS.TurnNullToEmptyString(ref firstName, ref lastName);
 
             //Assert
