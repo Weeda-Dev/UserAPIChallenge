@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using UsersAPI.Interfaces;
+﻿using UsersAPI.Interfaces;
 
 namespace UsersAPI.Services
 {
-    public class GetIdService : IGetIdService
+    public class IdService : IIdService
     {
         public int GetNewUserId(int lastIdOnUsersList)
         {

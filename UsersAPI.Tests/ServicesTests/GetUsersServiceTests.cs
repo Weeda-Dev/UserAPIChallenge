@@ -19,7 +19,7 @@ namespace UsersAPI.Tests.ServicesTests
         public void WhenGetUserLists_ShouldReturnValidUsersList()
         {
             //Set up
-            Mock<IGetJsonFileDataService> mockJsonHelper = GetMockJsonHelperSetUp();
+            Mock<IJsonFileDataService> mockJsonHelper = GetMockJsonHelperSetUp();
 
             //Act
             GetUsersService gUserServ = new GetUsersService(mockJsonHelper.Object);
@@ -39,7 +39,7 @@ namespace UsersAPI.Tests.ServicesTests
         public void WhenGetUserListRootObject_ShouldReturnValidRootObjectList()
         {
             //Set up
-            Mock<IGetJsonFileDataService> mockJsonHelper = GetMockJsonHelperSetUp();
+            Mock<IJsonFileDataService> mockJsonHelper = GetMockJsonHelperSetUp();
 
             //Act
             GetUsersService gUserServ = new GetUsersService(mockJsonHelper.Object);
@@ -56,9 +56,9 @@ namespace UsersAPI.Tests.ServicesTests
                 $"on the list is not {expectedFirstPersonFirstName}.");
         }
 
-        private static Mock<IGetJsonFileDataService> GetMockJsonHelperSetUp()
+        private static Mock<IJsonFileDataService> GetMockJsonHelperSetUp()
         {
-            var mockJsonHelper = new Mock<IGetJsonFileDataService>();
+            var mockJsonHelper = new Mock<IJsonFileDataService>();
             var fakejson = FakeJsonHelper.GetFakeValidUserDataJson();
             mockJsonHelper.Setup(x => x.GetUsersDataFromJsonFile())
                 .Returns(fakejson);

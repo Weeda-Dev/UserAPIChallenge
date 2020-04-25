@@ -7,11 +7,11 @@ namespace UsersAPI.Services
     /// <summary>
     /// This is a helper for getting data from Json File
     /// </summary>
-    public class GetJsonFileDataService : IGetJsonFileDataService
+    public class JsonFileDataService : IJsonFileDataService
     {
-        private readonly IGetFilePathService _getFilePathService;
+        private readonly IFilePathService _getFilePathService;
 
-        public GetJsonFileDataService(IGetFilePathService getFilePathService)
+        public JsonFileDataService(IFilePathService getFilePathService)
         {
             _getFilePathService = getFilePathService;
         }

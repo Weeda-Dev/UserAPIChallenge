@@ -1,5 +1,4 @@
-﻿using Autofac.Integration.WebApi;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -11,13 +10,13 @@ namespace UsersAPI.Controllers.API
 {
     public class UsersController : ApiController
     {
-        private readonly IGetJsonFileDataService _jsonHelper;
+        private readonly IJsonFileDataService _jsonHelper;
         private readonly IGetUsersService _getUsersHelper;
-        private readonly IGetIdService _getIdHelper;
+        private readonly IIdService _getIdHelper;
         private readonly IGetValidInputService _validInputHelper;
 
-        public UsersController(IGetJsonFileDataService jsonHelper, IGetUsersService getUsersHelper,
-            IGetIdService getIdHelper, IGetValidInputService validInputHelper)
+        public UsersController(IJsonFileDataService jsonHelper, IGetUsersService getUsersHelper,
+            IIdService getIdHelper, IGetValidInputService validInputHelper)
         {
             _jsonHelper = jsonHelper;
             _getUsersHelper = getUsersHelper;
@@ -152,7 +151,7 @@ namespace UsersAPI.Controllers.API
                 return Ok($"User id: {id} has succuessfully been removed.");
             }
 
-            return Ok($"This user id does not exists, not item has been removed.");
+            return Ok($"This user id does not exists, no user has been removed.");
         }
     }
 }

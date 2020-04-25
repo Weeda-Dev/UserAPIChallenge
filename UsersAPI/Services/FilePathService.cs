@@ -4,7 +4,7 @@ using UsersAPI.Interfaces;
 
 namespace UsersAPI.Services
 {
-    public class GetFilePathService : IGetFilePathService
+    public class FilePathService : IFilePathService
     {
         public string GetUsersDataJsonFilePath()
         {

@@ -16,7 +16,7 @@ namespace UsersAPI.Tests.ServicesTests
         [TestCase(98563253,98563254)]
         public void GivenLastIdOnUsersList_WhenGetNewUserIdIsCalled_ShouldReturnCorrectNewUserId(int lastIdOnUsersList, int expectedNewUserId)
         {
-            GetIdService getIdServ = new GetIdService();
+            IdService getIdServ = new IdService();
             var result = getIdServ.GetNewUserId(lastIdOnUsersList);
 
             result.ShouldBe(expectedNewUserId);

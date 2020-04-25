@@ -9,9 +9,9 @@ namespace UsersAPI.Services
     /// </summary>
     public class GetUsersService : IGetUsersService
     {
-        private readonly IGetJsonFileDataService _jsonHelper;
+        private readonly IJsonFileDataService _jsonHelper;
 
-        public GetUsersService(IGetJsonFileDataService jsonHelper)
+        public GetUsersService(IJsonFileDataService jsonHelper)
         {
             _jsonHelper = jsonHelper;
         }

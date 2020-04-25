@@ -17,11 +17,11 @@ namespace UsersAPI
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             //Register dependencies
-            builder.RegisterType<GetIdService>().As<IGetIdService>().SingleInstance();
-            builder.RegisterType<GetJsonFileDataService>().As<IGetJsonFileDataService>().SingleInstance();
+            builder.RegisterType<IdService>().As<IIdService>().SingleInstance();
+            builder.RegisterType<JsonFileDataService>().As<IJsonFileDataService>().SingleInstance();
             builder.RegisterType<GetUsersService>().As<IGetUsersService>().SingleInstance();
             builder.RegisterType<GetValidInputService>().As<IGetValidInputService>().SingleInstance();
-            builder.RegisterType<GetFilePathService>().As<IGetFilePathService>().SingleInstance();
+            builder.RegisterType<FilePathService>().As<IFilePathService>().SingleInstance();
 
             var container = builder.Build();
             var resolver = new AutofacWebApiDependencyResolver(container);
