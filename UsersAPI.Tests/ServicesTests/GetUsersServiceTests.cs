@@ -69,7 +69,7 @@ namespace UsersAPI.Tests.ServicesTests
         {
             var mockJsonHelper = new Mock<IJsonFileDataService>();
             var fakejson = FakeJsonHelper.GetFakeValidUserDataJson();
-            mockJsonHelper.Setup(x => x.GetUsersDataFromJsonFile(""))
+            mockJsonHelper.Setup(x => x.GetDataStringFromJsonFile(""))
                 .Returns(fakejson);
             return mockJsonHelper;
         }
