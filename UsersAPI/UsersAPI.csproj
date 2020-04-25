@@ -181,6 +181,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IGetValidInputService.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FilePathService.cs" />
@@ -188,7 +189,6 @@
     <Compile Include="Services\GetUsersService.cs" />
     <Compile Include="Services\GetJsonFileDataService.cs" />
     <Compile Include="Interfaces\IIdService.cs" />
-    <Compile Include="Interfaces\IGetValidInputService.cs" />
     <Compile Include="Interfaces\IJsonFileDataService.cs" />
     <Compile Include="Interfaces\IGetUsersService.cs" />
     <Compile Include="Interfaces\IFilePathService.cs" />
