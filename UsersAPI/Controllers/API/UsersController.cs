@@ -8,6 +8,9 @@ using UsersAPI.Interfaces;
 
 namespace UsersAPI.Controllers.API
 {
+    /// <summary>
+    /// API to manage users
+    /// </summary>
     public class UsersController : ApiController
     {
         private readonly IJsonFileDataService _jsonHelper;
@@ -26,7 +29,10 @@ namespace UsersAPI.Controllers.API
             _filePathService = filePathService;
         }
 
-        // GET api/users
+        /// <summary>
+        /// GET api/users
+        /// </summary>
+        /// <returns>All users and http status code</returns>
         public HttpResponseMessage Get()
         {
             return new HttpResponseMessage()
@@ -37,13 +43,12 @@ namespace UsersAPI.Controllers.API
             };
         }
 
-        // GET /api/users/get?firstName={firstName}&lastName={lastName}
         /// <summary>
-        /// Get all users information by id/ firstname or last name
+        /// GET /api/users/get?firstName={firstName}&lastName={lastName}
         /// </summary>
         /// <param name="firstName">first name of the user</param>
         /// <param name="lastName">first name of the user</param>
-        /// <returns>all information of the user</returns>
+        /// <returns>Information of the searched user and http status code</returns>
         public IHttpActionResult Get(string firstName, string lastName)
         {
             IEnumerable<UserModel> userLists = _getUsersHelper.GetUserLists();
@@ -72,7 +77,13 @@ namespace UsersAPI.Controllers.API
         }
 
 
-        // POST api/users
+
+        /// <summary>
+        /// POST api/users
+        /// - Create a new user
+        /// </summary>
+        /// <param name="nUser">Details for the user to be created</param>
+        /// <returns>Http status code with a status message</returns>
         public IHttpActionResult Post([FromBody]UserModel nUser)
         {
             var userListsRootOb = _getUsersHelper.GetUserListRootObject();
@@ -104,7 +115,13 @@ namespace UsersAPI.Controllers.API
             return BadRequest("Invalid input.");
         }
 
-        // PUT api/users/5
+        /// <summary>
+        /// PUT api/users/5
+        /// Update a user
+        /// </summary>
+        /// <param name="id">id of the user to be updated</param>
+        /// <param name="nUser">all details of the user to be updated</param>
+        /// <returns></returns>
         public IHttpActionResult Put(int id, [FromBody]UserModel nUser)
         {
             if (!ModelState.IsValid)
@@ -139,7 +156,11 @@ namespace UsersAPI.Controllers.API
                 return Ok($"User id: {id} has been successfully updated");
         }
 
-        // DELETE api/values/id
+        /// <summary>
+        /// DELETE api/values/id
+        /// </summary>
+        /// <param name="id">id of the user that will deleted</param>
+        /// <returns>Status code with information</returns>
         public IHttpActionResult Delete(int id)
         {
             var userListsRootOb = _getUsersHelper.GetUserListRootObject();
