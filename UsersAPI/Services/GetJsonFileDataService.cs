@@ -9,8 +9,6 @@ namespace UsersAPI.Services
     /// </summary>
     public class JsonFileDataService : IJsonFileDataService
     {
-        private readonly IFilePathService _filePathService;
-
         /// <summary>
         /// Get data from a Json file
         /// </summary>
