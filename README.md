@@ -6,7 +6,7 @@ What I have implemented is based on Web API only, no Frontend involved.
 UsersAPI/Controllers/API/UsersController.cs
 
 # Getting Started
-Please 'Set as a StartUp Project' on UsersAPI project and run the project on IIS Express
+Please 'Set as a StartUp Project' on 'UsersAPI' project and run the project on IIS Express
 
 I have provided Postman Collection as a sample on how to run each request. 
 Please use Postman to open the colloection.
