@@ -4,6 +4,6 @@
     {
         string GetUsersDataFromJsonFile();
         string GetUsersDataJsonFilePath();
-        void SerializedDataAndSavetoJsonFile(AllUsersModel userListsRootOb);
+        void SerializedDataAndSavetoJsonFile(AllUsersRootModel userListsRootOb);
     }
 }

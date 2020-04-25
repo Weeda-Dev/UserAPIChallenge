@@ -4,7 +4,7 @@ namespace UsersAPI.Interfaces
 {
     public interface IGetUsersService
     {
-        AllUsersModel GetUserListRootObject();
+        AllUsersRootModel GetUserListRootObject();
         IEnumerable<UserModel> GetUserLists();
     }
 }

@@ -16,14 +16,14 @@ namespace UsersAPI.Utilities
             _jsonHelper = jsonHelper;
         }
 
-        public AllUsersModel GetUserListRootObject()
+        public AllUsersRootModel GetUserListRootObject()
         {
-            return JsonConvert.DeserializeObject<AllUsersModel>(_jsonHelper.GetUsersDataFromJsonFile());
+            return JsonConvert.DeserializeObject<AllUsersRootModel>(_jsonHelper.GetUsersDataFromJsonFile());
         }
 
         public IEnumerable<UserModel> GetUserLists()
         {
-            AllUsersModel userListsob = GetUserListRootObject();
+            AllUsersRootModel userListsob = GetUserListRootObject();
             return userListsob.users;
         }
     }

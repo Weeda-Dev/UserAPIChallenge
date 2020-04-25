@@ -21,7 +21,7 @@ namespace UsersAPI.Utilities
             return HttpContext.Current.Server.MapPath($@"{FilePathConstants.USERS_DATA_JSON_FILE_PATH}");
         }
 
-        public void SerializedDataAndSavetoJsonFile(AllUsersModel userListsRootOb)
+        public void SerializedDataAndSavetoJsonFile(AllUsersRootModel userListsRootOb)
         {
             var serializedUserLists = JsonConvert.SerializeObject(userListsRootOb, Formatting.Indented);
             File.WriteAllText(GetUsersDataJsonFilePath(), serializedUserLists);

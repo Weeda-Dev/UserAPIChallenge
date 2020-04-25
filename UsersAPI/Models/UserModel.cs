@@ -13,7 +13,7 @@ public class UserModel
     public string ProfileImageThumbnail { get; set; }
 }
 
-public class AllUsersModel
+public class AllUsersRootModel
 {
     public IEnumerable<UserModel> users { get; set; }
 }

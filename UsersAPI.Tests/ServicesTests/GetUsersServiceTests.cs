@@ -40,7 +40,7 @@ namespace UsersAPI.Tests.ServicesTests
 
             //Act
             GetUsersService gUserServ = new GetUsersService(mockJsonHelper.Object);
-            AllUsersModel userListRootObject = gUserServ.GetUserListRootObject();
+            AllUsersRootModel userListRootObject = gUserServ.GetUserListRootObject();
             bool expectedItemValidCount = userListRootObject.users.Count() == 7;
 
             IEnumerable<UserModel> allUsers = userListRootObject.users;
