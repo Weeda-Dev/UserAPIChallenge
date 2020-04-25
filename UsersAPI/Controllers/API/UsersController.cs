@@ -31,7 +31,7 @@ namespace UsersAPI.Controllers.API
         {
             return new HttpResponseMessage()
             {
-                Content = new StringContent(_jsonHelper.GetUsersDataFromJsonFile(_filePathService.GetUsersDataJsonFilePath()),
+                Content = new StringContent(_jsonHelper.GetDataStringFromJsonFile(_filePathService.GetUsersDataJsonFilePath()),
                 Encoding.UTF8, "application/json"),
                 StatusCode = HttpStatusCode.OK
             };
@@ -98,7 +98,7 @@ namespace UsersAPI.Controllers.API
 
                 allUsersList.Add(newUser);
                 userListsRootOb.users = allUsersList;
-                _jsonHelper.SerializedDataAndSavetoJsonFile(userListsRootOb);
+                _jsonHelper.SerializedDataAndSavetoJsonFile(userListsRootOb, _filePathService.GetUsersDataJsonFilePath());
                 return Ok($"New user id: {nUser.Id} has been successfully added");
             }
             return BadRequest("Invalid input.");
@@ -135,7 +135,7 @@ namespace UsersAPI.Controllers.API
                     }).ToList();
 
             userListsRootOb.users = allUsersList;
-                _jsonHelper.SerializedDataAndSavetoJsonFile(userListsRootOb);
+                _jsonHelper.SerializedDataAndSavetoJsonFile(userListsRootOb, _filePathService.GetUsersDataJsonFilePath());
                 return Ok($"User id: {id} has been successfully updated");
         }
 
@@ -150,7 +150,7 @@ namespace UsersAPI.Controllers.API
             {
                 allUsers = allUsers.Where(x => !(x.Id.Equals(id))).ToList();
                 userListsRootOb.users = allUsers;
-                _jsonHelper.SerializedDataAndSavetoJsonFile(userListsRootOb);
+                _jsonHelper.SerializedDataAndSavetoJsonFile(userListsRootOb, _filePathService.GetUsersDataJsonFilePath());
                 return Ok($"User id: {id} has succuessfully been removed.");
             }
 

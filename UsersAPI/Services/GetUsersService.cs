@@ -20,7 +20,7 @@ namespace UsersAPI.Services
 
         public AllUsersRootModel GetUserListRootObject()
         {
-            return JsonConvert.DeserializeObject<AllUsersRootModel>(_jsonHelper.GetUsersDataFromJsonFile(_filePathService.GetUsersDataJsonFilePath()));
+            return JsonConvert.DeserializeObject<AllUsersRootModel>(_jsonHelper.GetDataStringFromJsonFile(_filePathService.GetUsersDataJsonFilePath()));
         }
 
         public IEnumerable<UserModel> GetUserLists()
