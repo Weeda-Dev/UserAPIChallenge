@@ -10,7 +10,7 @@ Please 'Set as a StartUp Project' on UsersAPI project and run the project on IIS
 
 I have provided Postman Collection as a sample on how to run each request. 
 Please use Postman to open the colloection.
-##### Import > Import From Link:  https://www.getpostman.com/collections/0b125320f0aca7e684b6
+##### Postman > Import > Import From Link:  https://www.getpostman.com/collections/0b125320f0aca7e684b6
 
 # Path to run each request: 
 ## 1. Get all users
