@@ -10,7 +10,7 @@ using UsersAPI.Services;
 namespace UsersAPI.Tests.ServicesTests
 {
     /// <summary>
-    /// Test get users service
+    /// Test get users services
     /// </summary>
     [TestFixture]
     public class GetUsersServiceTests
