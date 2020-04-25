@@ -2,6 +2,11 @@
 {
     public static class FakeJsonHelper
     {
+        /// <summary>
+        /// Get fake valid user data in json - used for testing
+        /// NOTE: CHANGING THE FAKE JSON BELOW WILL AFFECT THE TEST RESULTS!
+        /// </summary>
+        /// <returns>Fake User Data in Json</returns>
         public static string GetFakeValidUserDataJson()
         {
             return @"
