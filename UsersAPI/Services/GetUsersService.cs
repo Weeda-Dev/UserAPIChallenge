@@ -18,11 +18,19 @@ namespace UsersAPI.Services
             _filePathService = filePathService;
         }
 
+        /// <summary>
+        /// Deserialize Json into a all users list
+        /// </summary>
+        /// <returns>A list of all users from the root level</returns>
         public AllUsersRootModel GetUserListRootObject()
         {
             return JsonConvert.DeserializeObject<AllUsersRootModel>(_jsonHelper.GetDataStringFromJsonFile(_filePathService.GetUsersDataJsonFilePath()));
         }
 
+        /// <summary>
+        /// Get users list
+        /// </summary>
+        /// <returns>List of users</returns>
         public IEnumerable<UserModel> GetUserLists()
         {
             AllUsersRootModel userListsob = GetUserListRootObject();

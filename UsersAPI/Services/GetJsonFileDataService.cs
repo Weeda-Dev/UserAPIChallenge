@@ -5,14 +5,15 @@ using UsersAPI.Interfaces;
 namespace UsersAPI.Services
 {
     /// <summary>
-    /// This is a helper for getting data from Json File
+    /// Helper for getting data from Json File
     /// </summary>
     public class JsonFileDataService : IJsonFileDataService
     {
         /// <summary>
         /// Get data from a Json file
         /// </summary>
-        /// <returns>Get from Json data</returns>
+        /// <param name="JsonFilePath">File path to get the Json file</param>
+        /// <returns>Get data from Json file</returns>
         public string GetDataStringFromJsonFile(string JsonFilePath)
         {
             return File.ReadAllText(JsonFilePath);
@@ -22,6 +23,7 @@ namespace UsersAPI.Services
         /// Serialize data into Json format then save that data onto a Json File.
         /// </summary>
         /// <param name="userListsRootOb">All Users List from the root object level</param>
+        /// <param name="filePathToData">File path to get the Json file providing user data</param>
         public void SerializedDataAndSavetoJsonFile(AllUsersRootModel userListsRootOb, string filePathToData)
         {
             var serializedUserLists = JsonConvert.SerializeObject(userListsRootOb, Formatting.Indented);
