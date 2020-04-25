@@ -2,6 +2,9 @@
 This is a project created in ASP.Net C# using MVC and Web API.
 What I have implemented is based on Web API only, no Frontend involved. 
 
+# UserAPI code file
+UsersAPI/Controllers/API/UsersController.cs
+
 # Getting Started
 I have provided Postman Collection as a sample on how to run each request. 
 Path to User Challenge Api Postman Collection:  {share link here}
@@ -42,7 +45,5 @@ Note: {id} is the id of the user you would like to update (please have the old v
 ```
 Note:  {id} is the id of the user you would like to delete.
 
-# UserAPI code file
-UsersAPI/Controllers/API/UsersController.cs
 
 
