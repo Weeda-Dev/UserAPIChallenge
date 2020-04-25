@@ -8,7 +8,7 @@ namespace UsersAPI.Tests.ServicesTests
     /// Get new user ID Service Test
     /// </summary>
     [TestFixture]
-    public class GetIdServiceTests
+    public class IdServiceTests
     {
         [TestCase(34,35)]
         [TestCase(1,2)]

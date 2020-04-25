@@ -91,9 +91,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServicesTests\GetIdServiceTests.cs" />
+    <Compile Include="ServicesTests\IdServiceTests.cs" />
     <Compile Include="ServicesTests\GetUsersServiceTests.cs" />
-    <Compile Include="ServicesTests\ValidInputServiceTests.cs" />
+    <Compile Include="ServicesTests\GetValidInputServiceTests.cs" />
     <Compile Include="Utilities\FakeJsonHelper.cs" />
   </ItemGroup>
   <ItemGroup>
